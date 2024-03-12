@@ -204,13 +204,13 @@ To get a local copy up and running, follow these simple steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/null-percent/ExpressJS-Template.git
+   git clone https://github.com/kukuhtri1999/BodySync.git 
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd ExpressJs-Template
+   cd BodySync
    ```
 
 3. Install dependencies:
