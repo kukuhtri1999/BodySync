@@ -9,7 +9,180 @@ This project is a comprehensive fitness and wellness tracker that empowers users
 
 ---
 
-## Features
+## Key Features
+
+- **User Management:**
+  - User registration and login.
+  - User profile management with details such as height, weight, and profile image.
+
+- **Fitness Activities:**
+  - View a list of available fitness activities.
+  - Admin functionality to add, edit, or delete fitness activities.
+
+- **Workout Tracking:**
+  - Log and track workouts with details like date, duration, and calories burned.
+  - Set and monitor workout goals.
+  - View workout history and statistics.
+
+- **Nutrition Tracking:**
+  - Log and track daily nutrition intake.
+  - Set and monitor nutrition goals.
+  - View nutrition history and statistics.
+
+- **Goal Setting:**
+  - Set and manage fitness, nutrition, and wellness goals.
+  - Track progress towards goals.
+  - Receive notifications and recommendations based on goal progress.
+
+- **Progress Photos:**
+  - Upload and view progress photos to track physical changes over time.
+
+- **Notifications:**
+  - Receive notifications for workout reminders, goal achievements, and more.
+
+## Database Structure
+
+### Users:
+
+- userId (Primary Key)
+- username
+- email
+- password (hashed)
+- height
+- weight
+- createdAt
+- updatedAt
+
+### Fitness Activities:
+
+- activityId (Primary Key)
+- activityName
+- activityType
+- description
+- createdAt
+- updatedAt
+
+### Workouts:
+
+- workoutId (Primary Key)
+- userId (Foreign Key referencing Users table)
+- activityId (Foreign Key referencing Fitness Activities table)
+- date
+- duration
+- caloriesBurned
+- notes
+- createdAt
+- updatedAt
+
+### Nutrition Tracking:
+
+- nutritionId (Primary Key)
+- userId (Foreign Key referencing Users table)
+- date
+- mealType
+- foodItem
+- caloriesConsumed
+- protein
+- carbohydrates
+- fats
+- notes
+- createdAt
+- updatedAt
+
+### Goals:
+
+- goalId (Primary Key)
+- userId (Foreign Key referencing Users table)
+- goalType (Fitness, Nutrition, Wellness)
+- goalDescription
+- targetValue
+- progress
+- achieved (true/false)
+- startDate
+- endDate
+- createdAt
+- updatedAt
+
+---
+
+## Modules and Endpoints
+
+### User Module:
+
+- **Register:**
+  - Endpoint: `POST /api/register`
+
+- **Login:**
+  - Endpoint: `POST /api/login`
+
+- **Get User Profile:**
+  - Endpoint: `GET /api/profile`
+
+- **Update User Profile:**
+  - Endpoint: `PUT /api/profile`
+
+- **Change Password:**
+  - Endpoint: `PUT /api/change-password`
+
+### Fitness Activity Module:
+
+- **Get All Fitness Activities:**
+  - Endpoint: `GET /api/fitness-activities`
+
+- **Add New Fitness Activity (Admin):**
+  - Endpoint: `POST /api/admin/fitness-activities`
+
+- **Edit Fitness Activity (Admin):**
+  - Endpoint: `PUT /api/admin/fitness-activities/:activityId`
+
+- **Delete Fitness Activity (Admin):**
+  - Endpoint: `DELETE /api/admin/fitness-activities/:activityId`
+
+### Workout Module:
+
+- **Log Workout:**
+  - Endpoint: `POST /api/workouts`
+
+- **Get Workout History:**
+  - Endpoint: `GET /api/workouts`
+
+- **Get Workout Statistics:**
+  - Endpoint: `GET /api/workouts/statistics`
+
+- **Set Workout Goal:**
+  - Endpoint: `POST /api/workouts/goals`
+
+### Nutrition Tracking Module:
+
+- **Log Nutrition:**
+  - Endpoint: `POST /api/nutrition`
+
+- **Get Nutrition History:**
+  - Endpoint: `GET /api/nutrition`
+
+- **Get Nutrition Statistics:**
+  - Endpoint: `GET /api/nutrition/statistics`
+
+- **Set Nutrition Goal:**
+  - Endpoint: `POST /api/nutrition/goals`
+
+### Goals Module:
+
+- **Set Fitness Goal:**
+  - Endpoint: `POST /api/goals/fitness`
+
+- **Set Nutrition Goal:**
+  - Endpoint: `POST /api/goals/nutrition`
+
+- **Set Wellness Goal:**
+  - Endpoint: `POST /api/goals/wellness`
+
+- **Get Goal Progress:**
+  - Endpoint: `GET /api/goals/progress`
+
+---
+
+## Framework and Technology
 
 - **Node.js and Express.js:** Fast, unopinionated, minimalist web framework for Node.js.
 - **Prisma:** Modern database toolkit for PostgreSQL with type-safe database access.
