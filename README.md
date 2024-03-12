@@ -1,10 +1,10 @@
-# Node.js Express Backend Starter
+# BodySync - Healthier in your own Way
 
-This project serves as a starter template for backend development using Node.js, Express.js, Prisma, Swagger, ESLint, and PostgreSQL. It provides a solid foundation for building scalable and maintainable web applications.
+This project is a comprehensive fitness and wellness tracker that empowers users to manage their health and fitness goals effectively. The app should include features for tracking workouts, monitoring nutrition, setting goals, and providing personalized recommendations for a holistic approach to health and wellness.
 
-## Created by: Kukuh Tri Winarno Nugroho & Verdy Bangkit Yudho Negoro
+## Created by: Kukuh Tri Winarno Nugroho 
 
-- LinkedIn: [Kukuh Tri Winarno Nugroho](https://www.linkedin.com/in/kukuhtri99/) , [Verdy Bangkit Yudho Negoro](https://www.linkedin.com/in/verkit/)
+- LinkedIn: [Kukuh Tri Winarno Nugroho](https://www.linkedin.com/in/kukuhtri99/)
 - Website: [kukuhtri.my.id](https://kukuhtri.my.id/)
 
 ---

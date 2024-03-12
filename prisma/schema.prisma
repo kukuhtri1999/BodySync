@@ -14,12 +14,83 @@ datasource db {
 }
 
 // For the starter
+// schema.prisma
+
+// Define the User model
 model User {
-  id       Int      @id @default(autoincrement())
-  username String
-  email    String   @unique
-  password String
-  role     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  userId      Int      @id @default(autoincrement())
+  username    String
+  email       String
+  password    String
+  height      Float
+  weight      Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  // Define relationships
+  workouts    Workout[]
+  nutritions  Nutrition[]
+  goals       Goal[]
+}
+
+// Define the Fitness Activity model
+model FitnessActivity {
+  activityId    Int      @id @default(autoincrement())
+  activityName  String
+  activityType  String
+  description   String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  // Define relationships
+  workouts      Workout[]
+}
+
+// Define the Workout model
+model Workout {
+  workoutId        Int       @id @default(autoincrement())
+  userId           Int
+  activityId       Int
+  date             DateTime
+  duration         Int
+  caloriesBurned   Float
+  notes            String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  // Define relationships
+  user             User      @relation(fields: [userId], references: [userId])
+  fitnessActivity  FitnessActivity @relation(fields: [activityId], references: [activityId])
+}
+
+// Define the Nutrition model
+model Nutrition {
+  nutritionId      Int      @id @default(autoincrement())
+  userId           Int
+  date             DateTime
+  mealType         String
+  foodItem         String
+  caloriesConsumed Float
+  protein          Float
+  carbohydrates    Float
+  fats             Float
+  notes            String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  // Define relationships
+  user             User      @relation(fields: [userId], references: [userId])
+}
+
+// Define the Goal model
+model Goal {
+  goalId          Int      @id @default(autoincrement())
+  userId          Int
+  goalType        String
+  goalDescription String
+  targetValue     Float
+  progress        Float
+  achieved        Boolean
+  startDate       DateTime
+  endDate         DateTime
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  // Define relationships
+  user            User     @relation(fields: [userId], references: [userId])
 }
