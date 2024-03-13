@@ -6,13 +6,13 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Operate360 API (Example)',
+      title: 'BodySync - Healthier in your own Way',
       version: '1.0.0',
       description:
-        'API documentation for Operate360 - Your Comprehensive ERP System (Example)',
+        'This is NodeJS and ExpressJS project, This App is a comprehensive fitness and wellness tracker that empowers users to manage their health and fitness goals effectively. The app should include features for tracking workouts, monitoring nutrition, setting goals, and providing personalized recommendations for a holistic approach to health and wellness',
       contact: {
-        name: 'Your Name',
-        email: 'your.email@example.com'
+        name: 'Kukuh Tri Winarno Nugroho',
+        email: 'kukuhtri99@gmail.com'
       }
     },
     servers: [

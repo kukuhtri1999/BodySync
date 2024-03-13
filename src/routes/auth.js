@@ -1,17 +1,53 @@
-// src/routes/loginRoute.js
+// src/routes/auth.js
 const express = require('express')
-const authController = require('../controllers/authController')
-const authMiddleware = require('../middleware/authMiddleware')
-// const { specs } = require('../../swagger/swagger') // Update the path accordingly
-
 const router = express.Router()
+const authController = require('../controllers/authController')
+const authMiddleware = require('../middlewares/authMiddleware')
 
 /**
  * @swagger
  * /api/auth/login:
  *   post:
- *     summary: Authenticate a user.
- *     description: Authenticate a user with a valid username and password.
+ *     summary: Login to the BodySync app.
+ *     tags:
+ *       - Auth
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: User's email address.
+ *               password:
+ *                 type: string
+ *                 description: User's password.
+ *     responses:
+ *       '200':
+ *         description: Successful login. Returns a JWT token.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   description: JWT token for authentication.
+ *       '401':
+ *         description: Invalid credentials.
+ */
+router.post('/login', authMiddleware.validateLoginInput, authController.login)
+
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     summary: Register a new user in the BodySync app.
+ *     tags:
+ *       - Auth
  *     requestBody:
  *       required: true
  *       content:
@@ -21,25 +57,41 @@ const router = express.Router()
  *             properties:
  *               username:
  *                 type: string
+ *                 description: User's username.
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: User's email address.
  *               password:
  *                 type: string
+ *                 description: User's password.
+ *               height:
+ *                 type: number
+ *                 description: User's height in meters.
+ *               weight:
+ *                 type: number
+ *                 description: User's weight in kilograms.
  *     responses:
- *       200:
- *         description: Successful login. Returns an access token.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 accessToken:
- *                   type: string
- *       400:
- *         description: Bad request. Invalid input data.
- *       401:
- *         description: Unauthorized. Invalid credentials.
- *       500:
- *         description: Internal Server Error.
+ *       '201':
+ *         description: User successfully registered.
+ *       '400':
+ *         description: Validation error. Returns an array of errors.
  */
-router.post('/login', authMiddleware, authController)
+router.post('/register', authMiddleware.validateRegistrationInput, authController.register)
+
+/**
+ * @swagger
+ * /api/logout:
+ *   post:
+ *     summary: Logout from the BodySync app.
+ *     tags:
+ *       - Auth
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       '200':
+ *         description: Successful logout.
+ */
+router.post('/logout', authController.logout)
 
 module.exports = router

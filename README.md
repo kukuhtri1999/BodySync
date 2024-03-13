@@ -1,6 +1,6 @@
-# BodySync - Healthier in your own Way
+# BodySync API - Healthier in your own Way
 
-This project is a comprehensive fitness and wellness tracker that empowers users to manage their health and fitness goals effectively. The app should include features for tracking workouts, monitoring nutrition, setting goals, and providing personalized recommendations for a holistic approach to health and wellness.
+This project API is a comprehensive fitness and wellness tracker that empowers users to manage their health and fitness goals effectively built with Node JS and Express JS. The app should include features for tracking workouts, monitoring nutrition, setting goals, and providing personalized recommendations for a holistic approach to health and wellness.
 
 ## Created by: Kukuh Tri Winarno Nugroho 
 

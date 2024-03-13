@@ -5,15 +5,21 @@ const { specs, swaggerUi } = require('./swagger/swagger')
 const app = express()
 const PORT = process.env.PORT || 3000
 const authRoutes = require('./routes/auth')
+const userRoutes = require('./routes/user')
+const fitnessActivityRoutes = require('./routes/fitnessActivity')
+const workoutRoutes = require('./routes/workout')
 
 app.use(bodyParser.json())
 
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 app.use('/api/auth', authRoutes)
+app.use('/api/users', userRoutes)
+app.use('/api/fitness-activities', fitnessActivityRoutes)
+app.use('/api/workouts', workoutRoutes)
 
 app.get('/', (req, res) => {
-  res.send('Hello, Operate360!')
+  res.send('Hello, BodySync!')
 })
 
 app.listen(PORT, () => {
