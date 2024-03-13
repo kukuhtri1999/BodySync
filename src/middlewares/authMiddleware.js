@@ -125,6 +125,80 @@ const validateWorkoutIdParam = [
   }
 ]
 
+const validateCreateNutritionInput = [
+  body('userId').isInt().withMessage('Invalid userId'),
+  body('date').isISO8601().toDate().withMessage('Invalid date format'),
+  body('mealType').isString().withMessage('Invalid mealType'),
+  body('foodItem').isString().withMessage('Invalid foodItem'),
+  body('caloriesConsumed').isInt().withMessage('Invalid caloriesConsumed'),
+  body('protein').isInt().withMessage('Invalid protein'),
+  body('carbohydrates').isInt().withMessage('Invalid carbohydrates'),
+  body('fats').isInt().withMessage('Invalid fats'),
+  (req, res, next) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+    next()
+  }
+]
+
+const validateUpdateNutritionInput = [
+  param('nutritionId').isInt().withMessage('Invalid nutritionId parameter'),
+  body('userId').isInt().withMessage('Invalid userId'),
+  body('date').isISO8601().toDate().withMessage('Invalid date format'),
+  body('mealType').isString().withMessage('Invalid mealType'),
+  body('foodItem').isString().withMessage('Invalid foodItem'),
+  body('caloriesConsumed').isInt().withMessage('Invalid caloriesConsumed'),
+  body('protein').isInt().withMessage('Invalid protein'),
+  body('carbohydrates').isInt().withMessage('Invalid carbohydrates'),
+  body('fats').isInt().withMessage('Invalid fats'),
+  (req, res, next) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+    next()
+  }
+]
+
+const validateCreateGoalInput = [
+  body('userId').isInt().withMessage('Invalid userId'),
+  body('goalType').isString().withMessage('Invalid goalType'),
+  body('goalDescription').isString().withMessage('Invalid goalDescription'),
+  body('targetValue').isNumeric().withMessage('Invalid targetValue'),
+  body('progress').isNumeric().withMessage('Invalid progress'),
+  body('achieved').isBoolean().withMessage('Invalid achieved'),
+  body('startDate').isISO8601().toDate().withMessage('Invalid startDate format'),
+  body('endDate').isISO8601().toDate().withMessage('Invalid endDate format'),
+  (req, res, next) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+    next()
+  }
+]
+
+const validateUpdateGoalInput = [
+  param('goalId').isInt().withMessage('Invalid goalId parameter'),
+  body('userId').isInt().withMessage('Invalid userId'),
+  body('goalType').isString().withMessage('Invalid goalType'),
+  body('goalDescription').isString().withMessage('Invalid goalDescription'),
+  body('targetValue').isNumeric().withMessage('Invalid targetValue'),
+  body('progress').isNumeric().withMessage('Invalid progress'),
+  body('achieved').isBoolean().withMessage('Invalid achieved'),
+  body('startDate').isISO8601().toDate().withMessage('Invalid startDate format'),
+  body('endDate').isISO8601().toDate().withMessage('Invalid endDate format'),
+  (req, res, next) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+    next()
+  }
+]
+
 module.exports = {
-  validateLoginInput, validateRegistrationInput, validateUpdateProfileInput, validateCreateFitnessActivityInput, validateUpdateFitnessActivityInput, validateUserIdParam, validateCreateWorkoutInput, validateUpdateWorkoutInput, validateWorkoutIdParam
+  validateLoginInput, validateRegistrationInput, validateUpdateProfileInput, validateCreateFitnessActivityInput, validateUpdateFitnessActivityInput, validateUserIdParam, validateCreateWorkoutInput, validateUpdateWorkoutInput, validateWorkoutIdParam, validateCreateNutritionInput, validateUpdateNutritionInput, validateCreateGoalInput, validateUpdateGoalInput
 }

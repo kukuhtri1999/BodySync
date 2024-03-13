@@ -8,6 +8,8 @@ const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
 const fitnessActivityRoutes = require('./routes/fitnessActivity')
 const workoutRoutes = require('./routes/workout')
+const nutritionRoutes = require('./routes/nutrition')
+const goalRoutes = require('./routes/goal')
 
 app.use(bodyParser.json())
 
@@ -17,6 +19,8 @@ app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/fitness-activities', fitnessActivityRoutes)
 app.use('/api/workouts', workoutRoutes)
+app.use('/api/nutrition', nutritionRoutes)
+app.use('/api/goals', goalRoutes)
 
 app.get('/', (req, res) => {
   res.send('Hello, BodySync!')
